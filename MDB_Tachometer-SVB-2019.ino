@@ -1,5 +1,5 @@
 // source of code: http://www.pyroelectro.com/tutorials/tachometer_rpm_arduino/software.html
-// trigger: https://forum.arduino.cc/index.php?topic=155270.0 
+// trigger idea: https://forum.arduino.cc/index.php?topic=155270.0 
 
 volatile int trigger = 0;
 volatile float time = 0;
@@ -23,13 +23,14 @@ void loop()
   
   {    
     //Last 3 Average RPM Counts Eqauls....
-      if (trigger > 0) 
+      if (trigger < 5) 
           {rpm = (rpm_array[0] + rpm_array[1] + rpm_array[2] + rpm_array[3] + rpm_array[4]) / 5;
+          trigger = 0;
           }
       }
       
       // print(rpm);   
-      trigger = 0;
+      
 }
  
 
