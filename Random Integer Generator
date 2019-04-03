@@ -1,0 +1,24 @@
+import random
+import time
+ 
+# Choose a random waiting time in ms in the range from c to d.
+
+def r_wait(c,d) :
+    time.time() * random.randint(c,d)
+
+
+# Randomly choosing an integer in the range from a to b.
+def r_int(a,b) :
+    random.randint(a,b)
+
+
+
+
+# EXTRA -- - - - -- - -- -- - -- ---- 
+#def r_wait(c,d) :
+ #   s = round( random.uniform(c,d)) # rounds to 1 digit
+  #  time.sleep(s/1000) # in milliseconds
+  #  print(s)
+#def r_wait(c,d) :
+#   u = random.uniform(c,d)
+#    print(u)
