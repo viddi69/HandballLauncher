@@ -1,0 +1,65 @@
+int x = 0, y = 0;
+int corner;
+int x1 = 0, x2 = 0, x3 = 0,x4 = 0; 
+int y1 = 0, y2 = 0, y3 = 0 ,y4 =0; 
+int x_degrees, y_degrees; 
+int x_max, y_max;
+int x_min, y_min;
+int offset = 10000; // set offset to be used as tolerance for max and min of x and y
+int test_reg = 2000; // set a max value for how big difference between upper and lower readings, to store them in max and min.
+int get_degrees;
+int diff;
+
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  calibrate;
+  delay(1);
+
+}
+
+
+int calibrate (int get_degrees) {
+while (calibrate == 0) { 
+  
+    // 1. position: Lower left corner (zero)
+    x1 = x_degrees; // stores read value of x_degrees in x1
+    y1 = y_degrees; // stores read value of y_degrees in y1
+
+    // 2. position: upper left corner
+    x2 = x_degrees; // stores read value of x_degrees in x2
+    y2 = y_degrees; // stores read value of y_degrees in y2
+    min_x = (x1 + x2) / 2 // takes avg to define general min_x
+    
+    // 3. position: upper right corner
+    x3 = x_degrees; // stores read value of x_degrees in x3
+    y3 = y_degrees; // stores read value of y_degrees in y3
+    max_y = (y3 + y2) / 2 // takes avg to define general max_y
+    
+    // 4. position: lower right corner
+    x4 = x_degrees; // stores read value of x_degrees in x4
+    y4 = y_degrees; // stores read value of y_degrees in y4
+
+    
+    diff = x3 - x4; // difference
+    if (diff < test_reg) { // Test if x3 and x4 are too off from each other 
+    max_x = ( (x3 + x4) / 2 ) + offset;  // takes avg to define general max_x
+    }
+    // else Serial.print ("x3 and x4 are too off from each other"); 
+
+    diff = y1 - y4; // difference
+    if (diff < test_reg) { // Test if y1 and y4 are too off from each other 
+    min_y = ( (y1 + y4) / 2 ) + offset; // takes avg to define general min_y
+}
+    // else Serial.print ("y1 and y4 are too off from each other"); 
+
+     }
+  }
+
+ int zones (no) {
+  zone1 = // max and min
+ }
