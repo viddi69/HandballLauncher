@@ -6,7 +6,7 @@ volatile int trigger = 0;
 volatile unsigned long int t = 0;
 volatile unsigned long int time_last = 0;
 volatile float rpm_array[5] = {0,0,0,0,0};
-unsigned long int rpm = 0;
+volatile unsigned long int rpm = 0;
 volatile int adjust = 6;
 
 void setup()
@@ -20,19 +20,6 @@ void setup()
 //Main Loop To Calculate RPM
 void loop()
 {
-  ////lcd.setCursor(4, 1);
-  ////lcd.print(time);   
-
-  {    
-    //Last 5 Average RPM Counts Eqauls....
-      if (trigger >= 5) 
-          {rpm = (rpm_array[0] + rpm_array[1] + rpm_array[2] + rpm_array[3] + rpm_array[4]) / 5;
-          
-          Serial.print(rpm);
-          Serial.print("  ");
-          trigger = 0;
-          }
-      }   
 }
  
 
@@ -57,7 +44,7 @@ void my_interrupt()
       //Serial.print (rpm_array[1,2,3,4,5] \r);
       //Serial.print("  ");
       //}
-
-     
- trigger++;
+  
+      //Last 5 Average RPM Counts Eqauls.... (first 5 results are weird - but easier to process)
+          rpm = (rpm_array[0] + rpm_array[1] + rpm_array[2] + rpm_array[3] + rpm_array[4]) / 5;
 }
